@@ -1,0 +1,49 @@
+        body {
+        	font-family: arial;
+        	font-size:13px;
+        }
+        .instructions{font-style: italic;}
+        .hidden {display: none;}
+        #fadeIn{display: none;}
+        #btmText {margin-top:20px;}
+        #clickFade{margin-top: 10px;}
+        .rollOver{cursor: pointer;}
+        #flash {
+			width:340px;
+  			border:1px solid #C0C0C0; 
+  			-moz-box-shadow: 4px 4px #888;
+  			-webkit-box-shadow: 4px 4px #888;
+  			box-shadow: 4px 4px #888;
+  			height: 385px;
+  			background-color: #fff;
+            overflow: hidden;
+            padding: 5px;
+            z-index: 1;	
+        }
+        #lungs{
+            margin:0px auto; 
+            width:487px;
+        }
+        #staticText {
+        	position: absolute;
+        	top: 10px;
+        	left:370px;
+            width:178px;
+        }
+        #brkd {
+            background-image: url('media/pages/306_21_bkrd.png');
+            height:385px;
+        }
+        #buttons {
+            margin-top:10px;
+            text-align: center;
+        }
+        #return {
+            position: absolute;
+            top: 365px;
+            left: 235px;
+        }
+        #info {
+            margin-top:5px;
+            height: 80px;
+        }

@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+         <link rel="stylesheet" href="main.css">
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function() {
+                //rollover swap images with rel 
+                var img_src = "",
+                    new_src = "";
+                var $sel = {
+                    flash: $('#flash'),
+                    fade: $('#fadeIn'),
+                    click: $('#clickFade'),
+                    staticT: $('#staticText'),
+                    rollOver: $('.rollOver'),
+                    returnC: $('#return'), 
+                    flashC: $('#flashcontent'),
+                    hide: $('.hidden'), 
+                    nI: $('.numInfo')
+                };
+                $sel.click.click(function() {
+                    $sel.staticT.css('z-index', '-1');
+                    $sel.flashC.fadeOut();
+                    $sel.flash.animate({
+                        width: '535px'
+                    }, 700, function() {
+                        $sel.fade.fadeIn();
+                    });
+                });
+                $sel.returnC.click(function() {
+                    $sel.fade.hide();
+                    $sel.flash.animate({
+                        width: '340px'
+                    }, 500, function() {
+                        $sel.staticT.css('z-index', '1');
+                        $sel.flashC.fadeIn();
+                    });
+                });
+                $sel.nI.click(function(){
+                     $sel.hide.hide();
+                     var alt = $(this).attr('alt');
+                     $("#" + alt).fadeIn();
+                     heartHighlight(alt);
+                });
+                var heartHighlight = function(item){
+					document.getElementById("flashmovie").variable(item);
+                };
+                $sel.rollOver.hover(function() {
+                    //mouseover
+                    var $this = $(this);
+                    img_src = $this.attr('src'); //grab original image
+                    new_src = $this.attr('rel'); //grab rollover image
+                    $this.attr('src', new_src); //swap images
+                    $this.attr('rel', img_src); //swap images
+                }, function() {
+                    //mouse out
+                    $(this).attr('src', img_src); //swap images
+                    $(this).attr('rel', new_src); //swap images
+                });
+                function preload(arrayOfImages) {
+        $(arrayOfImages).each(function() {
+        $('<img/>')[0].src = this;
+        });
+      };
+      preload(['media/pages/1.png', 'media/pages/2.png', 'media/pages/3.png', 'media/pages/4.png', 'media/pages/5.png', 'media/pages/1_over.png', 'media/pages/2_over.png', 'media/pages/3_over.png', 'media/pages/4_over.png', 'media/pages/5_over.png', 'media/pages/return.png', 'media/pages/return_over.png', 'media/pages/306_21_compare.png', 'media/pages/compare.png', 'media/pages/compare_over.png' ]);
+            });
+
+        </script>
+    
+      
+    </head>
+   <body>
+        <div id="wrapper">
+        	<div id="flash">
+                <div id="brkd"> 
+                    <div id="flashcontent"></div>
+                    <script type="text/javascript">
+                        var so = new SWFObject("media/pages/nc-circulation.swf", "flashmovie", "340", "385", "7", "#000000");
+                        so.addParam("wmode", "transparent");
+                        so.addParam("allowScriptAccess", "sameDomain");
+                        so.write("flashcontent");
+                    </script>
+                    <div id="fadeIn">
+                        <div id="lungs"><img src="media/pages/306_21_compare.png" alt="Compare" /></div>
+                        <img src="media/pages/return.png" id="return" alt="Return" rel="media/pages/return_over.png" class="rollOver" /> 
+                    </div>
+                </div> 
+            </div>
+        	<div id="staticText">
+        	<div class="instructions">Click each number to learn more about each structure.</div>
+            <div id="buttons">
+            <img src="media/pages/1.png" alt="1" rel="media/pages/1_over.png" class="rollOver numInfo "/>
+            <img src="media/pages/2.png" alt="2" rel="media/pages/2_over.png" class="rollOver numInfo"/>
+            <img src="media/pages/3.png" alt="3" rel="media/pages/3_over.png" class="rollOver numInfo"/>
+            <img src="media/pages/4.png" alt="4" rel="media/pages/4_over.png" class="rollOver numInfo"/>
+            <img src="media/pages/5.png" alt="5" rel="media/pages/5_over.png" class="rollOver numInfo"/>
+            </div>
+            <div id="info">
+            <div id="1" class="hidden">
+            In adult/neonatal circulation, poorly oxygenated blood travels from the IVC and SVC to the right atrium. 
+            </div>
+            <div id="2" class="hidden">
+            The blood then enters the right ventricle and passes through to the pulmonary arteries and into the lungs.
+            </div>
+            <div id="3" class="hidden">
+            In the lungs, the blood is oxygenated and then enters the left atrium through the pulmonary vein.
+            </div>
+            <div id="4" class="hidden">
+            From the left atrium, the blood passes to the left ventricle where it is pumped to the systemic circulation via the aorta to the rest of the body.
+            </div>
+            <div id="5" class="hidden">
+            By the end of the first month after birth, the left ventricle wall is thicker than the right as it is now the main heart pump
+            </div>
+            </div>
+            <div id="btmText" class="instructions">
+            Click the button below to compare the Neonatal Cirtulatory system with the Fetal Circulatory system.
+            </div>
+            <div id="clickFade">
+             <img src="media/pages/compare.png" class="rollOver" rel="media/pages/compare_over.png" alt="Compare" />
+            </div>
+        	</div>
+        </div>
+    </body>
+</html>	
